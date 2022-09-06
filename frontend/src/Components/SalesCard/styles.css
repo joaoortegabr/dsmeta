@@ -1,0 +1,104 @@
+section {
+    width: 100%;    
+    max-width: 900px;
+    border-radius: 10px;
+    padding: 30px 10px;
+    background-color: #283142;
+}
+
+section h2 {
+    color: #676fff;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+}
+
+.input-field {
+    margin: 0 0 12px 0;
+    padding: 6px 10px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #182531;
+    border: 1px solid #384459;
+    border-radius: 4px;
+    color: #9aaabe;
+    font-size: 1.2rem;
+}
+
+.sales-table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.sales-table thead {
+    height: 55px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e9e9e9;
+}
+
+.sales-table tbody {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #cfcfcf;
+    text-align: center;
+}
+
+.sales-table tbody tr:nth-child(odd) {
+    background-color: #242c3b;
+}
+
+.sales-table tbody tr {
+    height: 74px;
+    border-top: 1px solid #5f6e82; 
+}
+
+.sales-table tbody tr:hover > td {
+    background-color: #384459;
+}
+
+.notify-btn {
+    height: 45px;
+    width: 45px;
+    background-color: rgba(255, 187, 114, 0.1);
+    border: 1px solid #ff6b72;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.notify-btn img {
+    height: 19px;
+    width: 19px;
+}
+
+.id-column, .date-column, .visits-column, .sales-column {
+    display: none;
+}
+
+@media (min-width: 576px) {
+
+    section {
+        padding: 30px 30px;
+    }
+
+    .sales-table tbody {
+        font-size: 1rem;
+    }
+
+    .sales-table tbody tr {
+        height: 62px;
+    }
+
+    .date-column {
+        display: table-cell;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .id-column, .visits-column, .sales-column {
+        display: table-cell;
+    }
+
+}

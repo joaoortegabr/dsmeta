@@ -1,0 +1,13 @@
+.notify-btn {
+    height: 45px;
+    width: 45px;
+    background-color: rgba(255, 187, 114, 0.1);
+    border: 1px solid #ff6b72;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.notify-btn img {
+    height: 19px;
+    width: 19px;
+}
