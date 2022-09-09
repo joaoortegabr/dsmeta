@@ -1,8 +1,11 @@
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import NotificationButton from '../NotificationButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles.css';
+import axios from 'axios';
+import { BASE_URL } from '../../utils/request';
+import { Sale } from '../../models/sale';
 
 function SalesCard() {
 
@@ -11,6 +14,19 @@ function SalesCard() {
 
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
+
+    const [sales, setSales] = useState<Sale[]>([]);
+
+    useEffect(() => {
+
+        const dmin = minDate.toISOString().slice(0, 10);
+        const dmax = maxDate.toISOString().slice(0, 10);
+
+        axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
+            .then(response => {
+                setSales(response.data.content);
+            });
+    }, [minDate, maxDate]);
 
     return(
         <section>
@@ -47,33 +63,21 @@ function SalesCard() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className="id-column">34</td>
-                            <td className="date-column">08/07/2022</td>
-                            <td>Anakin</td>
-                            <td className="visits-column">74</td>
-                            <td className="sales-column">34</td>
-                            <td>R$ 5520.00</td>
-                            <td><NotificationButton /></td>
-                        </tr>
-                        <tr>
-                            <td className="id-column">26</td>
-                            <td className="date-column">08/07/2022</td>
-                            <td>Sheila</td>
-                            <td className="visits-column">45</td>
-                            <td className="sales-column">67</td>
-                            <td>R$ 1220.00</td>
-                            <td><NotificationButton /></td>
-                        </tr>
-                        <tr>
-                            <td className="id-column">14</td>
-                            <td className="date-column">08/07/2022</td>
-                            <td>Max</td>
-                            <td className="visits-column">7</td>
-                            <td className="sales-column">19</td>
-                            <td>R$ 830.00</td>
-                            <td><NotificationButton /></td>
-                        </tr>
+                        {
+                            sales.map(sale => {
+                                return (
+                                    <tr key={sale.id}>
+                                        <td className="id-column">{sale.id}</td>
+                                        <td className="date-column">{new Date(sale.date).toLocaleDateString()}</td>
+                                        <td>{sale.sellerName}</td>
+                                        <td className="visits-column">{sale.visited}</td>
+                                        <td className="sales-column">{sale.deals}</td>
+                                        <td>R$ {sale.amount.toFixed(2)}</td>
+                                        <td><NotificationButton saleId={sale.id}/></td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
