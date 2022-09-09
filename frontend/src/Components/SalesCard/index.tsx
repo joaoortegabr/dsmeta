@@ -32,6 +32,7 @@ function SalesCard() {
         <section>
             <h2>Vendas</h2>
             <div>
+                <p className="date-picker-label">Start date</p>
                 <div>
                     <DatePicker
                         selected={minDate}
@@ -40,6 +41,7 @@ function SalesCard() {
                         dateFormat="dd/MM/yyyy"
                     />
                 </div>
+                <p>End date</p>
                 <div>
                     <DatePicker
                         selected={maxDate}

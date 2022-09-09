@@ -1,6 +1,5 @@
 section {
-    width: 100%;    
-    max-width: 1280px;
+    margin: 0 auto;
     border-radius: 10px;
     padding: 30px 10px;
     background-color: #283142;
@@ -12,10 +11,13 @@ section h2 {
     margin: 0 0 20px 0;
 }
 
+.date-picker-label {
+    margin: 0 0 5px 5px;
+}
+
 .input-field {
     margin: 0 0 12px 0;
     padding: 6px 10px;
-    width: 100%;
     max-width: 300px;
     background-color: #182531;
     border: 1px solid #384459;
@@ -25,9 +27,9 @@ section h2 {
 }
 
 .sales-table {
-    width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
+    width: 100%;
 }
 
 .sales-table thead {
